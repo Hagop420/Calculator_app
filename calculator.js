@@ -30,7 +30,7 @@ errorMsg.style.display = 'none'
 
         inputsNumbers.forEach((input) => {
           input.style.color = '#f3f3f3'
-          input.addEventListener('keydown' , () => {
+          input.addEventListener('keydown' , (e) => {
      setTimeout(() => {
        // if letter entered
       if (isNaN(input.value)) {
@@ -45,12 +45,21 @@ errorMsg.style.display = 'none'
 
         }
 
+
+
+        // if fields r backspaced
+
+        if(e.key === 'Backspace'){
+          sign.style.display = 'none'
+        }
+
         // if its not empty and there both numbers
         if(inputsNumbers[0].value !== ''
         && inputsNumbers[1].value !== ''
         && Number(inputsNumbers[0].value)
         && inputsNumbers[1].value !== ''
         && Number(inputsNumbers[1].value)){
+          sign.style.display = 'block'
         equalSign.className = 'equalsTo'
         equalSign.innerText = '🟰'
         sign.appendChild(equalSign)
@@ -60,21 +69,78 @@ errorMsg.style.display = 'none'
 
 
 
-
-
-
         // Calculations
 
 
-        plusButton.addEventListener('click' , () => {
-        inputsNumbers[0].value + inputsNumbers[1].value
-            equalSign.addEventListener('click' , () => {
+
+
+
+
+
+        // plus
+
               const answer = document.createElement('span')
+
+
+        plusButton.addEventListener('click' , () => {
+          answerMinus.remove()
+          inputsNumbers[0].value + inputsNumbers[1].value
+            equalSign.addEventListener('click' , () => {
+              // const answer = document.createElement('span')
               answer.innerText = parseFloat(inputsNumbers[0].value) + parseFloat(inputsNumbers[1].value)
               answer.className = 'flexedAnswer'
               sign.appendChild(answer)
-            })
+
+            }, {once: true})
+
+if(answer.innerText !== ''){
+  answer.remove()
+}
+
         })
+
+
+        // minus
+
+
+
+        const answerMinus = document.createElement('span')
+
+          minusButton.addEventListener('click' , () => {
+            answer.remove()
+        inputsNumbers[0].value - inputsNumbers[1].value
+            equalSign.addEventListener('click' , () => {
+
+              answerMinus.innerText = parseFloat(inputsNumbers[0].value) - parseFloat(inputsNumbers[1].value)
+              answerMinus.className = 'flexedAnswer'
+              sign.appendChild(answerMinus)
+              answer.remove()
+
+              if(answerMinus.innerText < 0){
+               answerMinus.style.color = 'red'
+               }
+
+            }, {once: true})
+            // if(answerMinus.innerText !== ''){
+            //   answer.remove()
+            // }
+        })
+
+
+
+
+
+        // times/mulitiplied
+
+
+
+
+
+        // divided by
+
+
+
+
 
 
 
