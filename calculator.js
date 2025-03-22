@@ -53,6 +53,8 @@ input.addEventListener('keydown' , (e) => {
               CC.addEventListener('click' , () => {
                 inputsNumbers[0].value = ''
                 inputsNumbers[1].value = ''
+                inputsNumbers[0].style.border = '#f3f3f3 solid 2px'
+                inputsNumbers[1].style.border = '#f3f3f3 solid 2px'
 
               })
             }
@@ -63,6 +65,9 @@ input.addEventListener('keydown' , (e) => {
 
   CC.addEventListener('click' , () => {
           CC.style.display = 'none'
+          inputsNumbers[0].style.border = '#f3f3f3 solid 2px'
+                inputsNumbers[1].style.border = '#f3f3f3 solid 2px'
+          equalSign.style.display = 'none'
         })
 
 
@@ -70,9 +75,34 @@ input.addEventListener('keydown' , (e) => {
        // if letter entered
       if (isNaN(inputsNumbers[0].value) || isNaN(inputsNumbers[1].value)) {
         input.style.border = 'red solid 2px'
+        CC.addEventListener('click' , () => {
+          inputsNumbers[0].style.border = '#f3f3f3 solid 2px'
+                inputsNumbers[1].style.border = '#f3f3f3 solid 2px'
+        })
         errorMsg.style.display = 'flex'
         equalSign.remove()
         plusButton.addEventListener('click' , () => {
+          errorMsg.innerHTML = 'Invalid numerals'
+         setTimeout(() => {
+          errorMsg.remove()
+         }, 2000)
+
+        })
+        minusButton.addEventListener('click' , () => {
+          errorMsg.innerHTML = 'Invalid numerals'
+         setTimeout(() => {
+          errorMsg.remove()
+         }, 2000)
+
+        })
+        multiplyButton.addEventListener('click' , () => {
+          errorMsg.innerHTML = 'Invalid numerals'
+         setTimeout(() => {
+          errorMsg.remove()
+         }, 2000)
+
+        })
+        divideButton.addEventListener('click' , () => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.remove()
@@ -85,10 +115,16 @@ input.addEventListener('keydown' , (e) => {
   input.style.border = '#f3f3f3 solid 2px'
           errorMsg.style.display = 'none'
 
+
         }
 
-        if(inputsNumbers[0].value!== '' || inputsNumbers[1] !== ''){
+        if(inputsNumbers[0].value!== '' || inputsNumbers[1].value !== ''){
                     CC.style.display = 'inline'
+        }
+
+
+        if(inputsNumbers[0].value== '' || inputsNumbers[1].value == ''){
+          equalSign.style.display = 'none'
         }
 
 
@@ -122,7 +158,10 @@ input.addEventListener('keydown' , (e) => {
           // sign.style.display = 'block'
 document.querySelectorAll('.flexedAnswer').forEach((el) => {
   el.style.display = "none"
-});        equalSign.className = 'equalsTo'
+
+});
+          equalSign.style.display = 'inline'
+equalSign.className = 'equalsTo'
         equalSign.innerText = '🟰'
         sign.appendChild(equalSign)
         sign.style.display = 'flex'
