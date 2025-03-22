@@ -1,3 +1,4 @@
+let operation = null
 const wholeContainer = document.querySelector('.container')
 const inputsNumbers = document.querySelectorAll('input')
 const plusButton = document.querySelector('.plus')
@@ -50,17 +51,26 @@ errorMsg.style.display = 'none'
         // if fields r backspaced
 
         if(e.key === 'Backspace'){
-          sign.style.display = 'none'
+          sign.style.visibility = 'none'
+          const answerBoxed = document.querySelectorAll('.flexedAnswer')
+          answerBoxed.forEach((eachAnswer) => {
+            eachAnswer.style.display = 'none'
+          })
         }
 
+
+
         // if its not empty and there both numbers
+        // equal sign appending
         if(inputsNumbers[0].value !== ''
         && inputsNumbers[1].value !== ''
         && Number(inputsNumbers[0].value)
         && inputsNumbers[1].value !== ''
         && Number(inputsNumbers[1].value)){
-          sign.style.display = 'block'
-        equalSign.className = 'equalsTo'
+          // sign.style.display = 'block'
+document.querySelectorAll('.flexedAnswer').forEach((el) => {
+  el.style.display = "none"
+});        equalSign.className = 'equalsTo'
         equalSign.innerText = '🟰'
         sign.appendChild(equalSign)
         sign.style.display = 'flex'
@@ -76,72 +86,78 @@ errorMsg.style.display = 'none'
 
 
 
-
         // plus
 
               const answer = document.createElement('span')
 
+              // creating all answers element spans
+          const answerPlus = document.createElement('span')
+          const answerMinus = document.createElement('span')
+          const answerMultiply = document.createElement('span')
+          const answerDivide = document.createElement('span')
 
-        plusButton.addEventListener('click' , () => {
-          answerMinus.remove()
-          inputsNumbers[0].value + inputsNumbers[1].value
-            equalSign.addEventListener('click' , () => {
-              // const answer = document.createElement('span')
-              answer.innerText = parseFloat(inputsNumbers[0].value) + parseFloat(inputsNumbers[1].value)
-              answer.className = 'flexedAnswer'
-              sign.appendChild(answer)
 
-            }, {once: true})
+plusButton.addEventListener('click', () => {
+  operation = 'plus';
+});
+minusButton.addEventListener('click', () => {
+  operation = 'minus';
+});
 
-if(answer.innerText !== ''){
-  answer.remove()
+multiplyButton.addEventListener('click', () => {
+  operation = 'multiply';
+});
+divideButton.addEventListener('click', () => {
+  operation = 'divide';
+});
+
+equalSign.addEventListener('click', () => {
+
+
+  document.querySelectorAll('.flexedAnswer').forEach(el => el.remove());
+
+const num1 = parseFloat(inputsNumbers[0].value);
+  const num2 = parseFloat(inputsNumbers[1].value);
+
+
+if(operation === 'plus'){
+       answerPlus.innerText = parseFloat(inputsNumbers[0].value) + parseFloat(inputsNumbers[1].value)
+     answerPlus.className = 'flexedAnswer plusedAnswer'
+     answerPlus.remove()
+      sign.appendChild(answerPlus);
+      document.querySelector('.plusedAnswer').style.display = 'flex'
+      // - gone
+     document.querySelector('.answerMinused').style.display = 'none'
+
+// +
+
+}else if(operation === 'minus'){
+       answerMinus.innerText = parseFloat(inputsNumbers[0].value) - parseFloat(inputsNumbers[1].value)
+                  answerMinus.className = 'flexedAnswer answerMinused'
+                       answerMinus.remove()
+                  sign.appendChild(answerMinus);
+                  document.querySelector('.answerMinused').style.display = 'flex'
+                  // + gone
+                  document.querySelector('.plusedAnswer').style.display = 'none'
+}else if(operation === 'multiply'){
+       answerMultiply.innerText = parseFloat(inputsNumbers[0].value) * parseFloat(inputsNumbers[1].value)
+                  answerMultiply.className = 'flexedAnswer answerMultiplied'
+                  answerMultiply.remove()
+                  sign.appendChild(answerMultiply);
+                  document.querySelector('.answerMultiplied').style.display = 'flex'
+                  // - gone
+                  document.querySelector('.answerMinused').style.display = 'none'
+}else if(operation === 'divide'){
+       answerDivide.innerText = parseFloat(inputsNumbers[0].value) / parseFloat(inputsNumbers[1].value)
+                  answerDivide.className = 'flexedAnswer answerDivided'
+                  answerDivide.remove()
+                  sign.appendChild(answerDivide);
+                  document.querySelector('.answerDivided').style.display = 'flex'
+                  // * gone
+                  document.querySelector('.answerMultiplied').style.display = 'none'
 }
 
-        })
-
-
-        // minus
-
-
-
-        const answerMinus = document.createElement('span')
-
-          minusButton.addEventListener('click' , () => {
-            answer.remove()
-        inputsNumbers[0].value - inputsNumbers[1].value
-            equalSign.addEventListener('click' , () => {
-
-              answerMinus.innerText = parseFloat(inputsNumbers[0].value) - parseFloat(inputsNumbers[1].value)
-              answerMinus.className = 'flexedAnswer'
-              sign.appendChild(answerMinus)
-              answer.remove()
-
-              if(answerMinus.innerText < 0){
-               answerMinus.style.color = 'red'
-               }
-
-            }, {once: true})
-            // if(answerMinus.innerText !== ''){
-            //   answer.remove()
-            // }
-        })
-
-
-
-
-
-        // times/mulitiplied
-
-
-
-
-
-        // divided by
-
-
-
-
-
+});
 
 
 
