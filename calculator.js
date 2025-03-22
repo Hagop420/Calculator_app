@@ -6,7 +6,7 @@ const minusButton = document.querySelector('.minus')
 const multiplyButton = document.querySelector('.multiplied')
 const divideButton = document.querySelector('.divided')
 
-
+const CCappendH1 = document.querySelector('.append_CC')
 
 // induvidual inputs
 const input_one = document.querySelector('.number_one')
@@ -17,6 +17,7 @@ const errorMsg = document.querySelector('.error_msg')
 errorMsg.style.display = 'none'
 // if input values r not a number
 
+              const CC = document.createElement('button')
 
 
 // append a = sign
@@ -30,14 +31,54 @@ errorMsg.style.display = 'none'
 
 
         inputsNumbers.forEach((input) => {
-          input.style.color = '#f3f3f3'
-          input.addEventListener('keydown' , (e) => {
+
+
+let appendedChild = false;
+
+
+input.style.color = '#f3f3f3'
+input.addEventListener('keydown' , (e) => {
+
+
+                if (!appendedChild) {
+      appendedChild = true;
+       // creating a cc reset
+              CC.className = 'CC_reset_btn'
+              CC.innerText = 'CC'
+
+              CCappendH1.appendChild(CC)
+              const one = document.querySelector('.CC_reset_btn')
+                  CC.style.scale = 1
+              // CCappendH1.children[1].style.display = 'none'
+              CC.addEventListener('click' , () => {
+                inputsNumbers[0].value = ''
+                inputsNumbers[1].value = ''
+
+              })
+            }
+
+
+
+
+
+  CC.addEventListener('click' , () => {
+          CC.style.display = 'none'
+        })
+
+
      setTimeout(() => {
        // if letter entered
-      if (isNaN(input.value)) {
+      if (isNaN(inputsNumbers[0].value) || isNaN(inputsNumbers[1].value)) {
         input.style.border = 'red solid 2px'
         errorMsg.style.display = 'flex'
         equalSign.remove()
+        plusButton.addEventListener('click' , () => {
+          errorMsg.innerHTML = 'Invalid numerals'
+         setTimeout(() => {
+          errorMsg.remove()
+         }, 2000)
+
+        })
       }
 
       if(Number(input.value)){
@@ -46,6 +87,12 @@ errorMsg.style.display = 'none'
 
         }
 
+        if(inputsNumbers[0].value!== '' || inputsNumbers[1] !== ''){
+                    CC.style.display = 'inline'
+        }
+
+
+
 
 
         // if fields r backspaced
@@ -53,10 +100,15 @@ errorMsg.style.display = 'none'
         if(e.key === 'Backspace'){
           sign.style.visibility = 'none'
           const answerBoxed = document.querySelectorAll('.flexedAnswer')
+          if(inputsNumbers[0].value === '' && inputsNumbers[1].value === ''){
+            CC.style.display = 'none'
+          }
           answerBoxed.forEach((eachAnswer) => {
             eachAnswer.style.display = 'none'
           })
         }
+
+
 
 
 
@@ -165,6 +217,8 @@ if(operation === 'plus'){
       }
     }, 0);
 
+
+    // console.log(CC)
 
 
   })

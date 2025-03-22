@@ -90,3 +90,24 @@ button{  cursor: pointer;}
   margin: 14px;
   font-weight: bold;
 }
+
+.append_CC{
+
+}
+
+button{border:0;transition: all .3s ease-in-out}
+button:hover{opacity:.9; color:red;   scale: 1.1;
+}
+
+.CC_reset_btn{
+  color: #000;
+  /* display: flex; */
+  justify-content: flex-start;
+font-weight: bold;
+border: none;
+margin-left: 25px;
+padding: 5px 20px;
+  border-radius: .3px;
+
+
+}
