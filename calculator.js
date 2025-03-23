@@ -36,6 +36,10 @@ errorMsg.style.display = 'none'
 let appendedChild = false;
 
 
+
+
+
+
 input.style.color = '#f3f3f3'
 input.addEventListener('keydown' , (e) => {
 
@@ -55,7 +59,7 @@ input.addEventListener('keydown' , (e) => {
                 inputsNumbers[1].value = ''
                 inputsNumbers[0].style.border = '#f3f3f3 solid 2px'
                 inputsNumbers[1].style.border = '#f3f3f3 solid 2px'
-
+                document.querySelector('.flexedAnswer').style.display = 'none'
               })
             }
 
@@ -72,6 +76,19 @@ input.addEventListener('keydown' , (e) => {
 
 
      setTimeout(() => {
+              // if the operand buttons r clicked but there's no input values
+plusButton.addEventListener('click' , () => {
+  if(input_one.value === '' || input_two.value === ''){
+    errorMsg.style.display = 'flex'
+                  errorMsg.innerHTML = 'Please enter both fields to continue'
+                  setTimeout(() => errorMsg.style.display = 'none' , 2000)
+    }else{
+      errorMsg.remove()
+    }
+
+
+})
+
        // if letter entered
       if (isNaN(inputsNumbers[0].value) || isNaN(inputsNumbers[1].value)) {
         input.style.border = 'red solid 2px'
@@ -80,11 +97,13 @@ input.addEventListener('keydown' , (e) => {
                 inputsNumbers[1].style.border = '#f3f3f3 solid 2px'
         })
         errorMsg.style.display = 'flex'
+                          errorMsg.innerHTML = 'Invalid entry'
+                          setTimeout(() => errorMsg.style.display = 'none' , 2000)
         equalSign.remove()
         plusButton.addEventListener('click' , () => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
-          errorMsg.remove()
+          errorMsg.style.display = 'none';
          }, 2000)
 
         })
@@ -131,6 +150,8 @@ input.addEventListener('keydown' , (e) => {
 
 
 
+
+
         // if fields r backspaced
 
         if(e.key === 'Backspace'){
@@ -143,6 +164,8 @@ input.addEventListener('keydown' , (e) => {
             eachAnswer.style.display = 'none'
           })
         }
+
+
 
 
 
@@ -217,6 +240,10 @@ if(operation === 'plus'){
      answerPlus.remove()
       sign.appendChild(answerPlus);
       document.querySelector('.plusedAnswer').style.display = 'flex'
+         const valPlused = document.querySelector('.plusedAnswer').innerHTML
+                  if(valPlused < 0){
+                    document.querySelector('.plusedAnswer').style.color = 'red'
+                  }
       // - gone
      document.querySelector('.answerMinused').style.display = 'none'
 
@@ -228,6 +255,10 @@ if(operation === 'plus'){
                        answerMinus.remove()
                   sign.appendChild(answerMinus);
                   document.querySelector('.answerMinused').style.display = 'flex'
+                  const valMinus = document.querySelector('.answerMinused').innerHTML
+                  if(valMinus < 0){
+                    document.querySelector('.answerMinused').style.color = 'red'
+                  }
                   // + gone
                   document.querySelector('.plusedAnswer').style.display = 'none'
 }else if(operation === 'multiply'){
@@ -236,6 +267,10 @@ if(operation === 'plus'){
                   answerMultiply.remove()
                   sign.appendChild(answerMultiply);
                   document.querySelector('.answerMultiplied').style.display = 'flex'
+                   const valMultiply = document.querySelector('.answerMultiplied').innerHTML
+                  if(valMultiply < 0){
+                    document.querySelector('.answerMultiplied').style.color = 'red'
+                  }
                   // - gone
                   document.querySelector('.answerMinused').style.display = 'none'
 }else if(operation === 'divide'){
@@ -244,11 +279,24 @@ if(operation === 'plus'){
                   answerDivide.remove()
                   sign.appendChild(answerDivide);
                   document.querySelector('.answerDivided').style.display = 'flex'
+                    const valDivided = document.querySelector('.answerDivided').innerHTML
+                  if(valDivided < 0){
+                    document.querySelector('.answerDivided').style.color = 'red'
+                  }
                   // * gone
                   document.querySelector('.answerMultiplied').style.display = 'none'
+}else if(!operation){
+  errorMsg.style.display = 'flex'
+  errorMsg.innerHTML = 'Please select an operand'
+    setTimeout(() => errorMsg.style.display = 'none' , 2000)
 }
 
+
 });
+
+
+
+
 
 
 
@@ -256,10 +304,7 @@ if(operation === 'plus'){
       }
     }, 0);
 
-
-    // console.log(CC)
-
-
   })
+
 
 })
