@@ -1,0 +1,113 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(61, 55, 55);
+  max-height: 50vh;
+  margin: 50px;
+}
+
+h2{
+  color: #fff ;
+  text-align: center;
+}
+
+.flexed{
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.numbers_flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ label{
+
+}
+
+.container .number_one{
+  width: 50px;
+  height: 50px;
+  padding: 4px 65px;
+  background-color: black;
+  border:  2px solid;
+}
+
+.container .number_two{
+  width: 50px;
+  height: 50px;
+    padding: 4px 65px;
+  background-color: black;
+  border:  2px solid;
+}
+
+.equasions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+input{margin: 9px; border-radius:5px;}
+input:focus{
+  outline:none ;
+}
+
+/* signs */
+
+.plus,
+.minus,
+.multiplied,
+.divided,
+.equalsTo{
+  background-color: #fff;
+  padding: 3px 20px;
+  margin: 20px;
+}
+
+.error_msg{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  color: darkorange;
+  font-family: 'Courier New', Courier, monospace;
+}
+button{  cursor: pointer;}
+
+
+
+/* js sum */
+
+.flexedAnswer{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color:yellow;
+  background-color: #000;
+  padding: 7px 26px;
+  margin: 14px;
+  font-weight: bold;
+}
+
+.append_CC{
+
+}
+
+button{border:0;transition: all .3s ease-in-out}
+button:hover{opacity:.9; color:red;   scale: 1.1;
+}
+
+.CC_reset_btn{
+  color: #000;
+  /* display: flex; */
+  justify-content: flex-start;
+font-weight: bold;
+border: none;
+margin-left: 25px;
+padding: 5px 20px;
+  border-radius: .3px;
+
+
+}
