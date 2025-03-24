@@ -52,12 +52,9 @@ let appendedChild = false;
                           setTimeout(() => errorMsg.style.display = 'none' , 2000)
                           }
 
-      //                      // if letter entered
-      // if (isNaN(inputsNumbers[0].value) || isNaN(inputsNumbers[1].value)) {
-      //   // plusButton.addEventListener('click' , invalidEntry)
-      //   console.log(80)
-      // }
-
+      function errorDisplay(){
+        errorMsg.style.display = 'none'
+      }
 
 
 
@@ -123,6 +120,7 @@ input.addEventListener('keydown' , (e) => {
 
         })
         minusButton.addEventListener('click' , () => {
+          errorMsg.style.display = 'flex'
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
@@ -130,6 +128,7 @@ input.addEventListener('keydown' , (e) => {
 
         })
         multiplyButton.addEventListener('click' , () => {
+          errorMsg.style.display = 'flex'
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
@@ -137,6 +136,49 @@ input.addEventListener('keydown' , (e) => {
 
         })
         divideButton.addEventListener('click' , () => {
+           errorMsg.style.display = 'flex'
+          errorMsg.innerHTML = 'Invalid numerals'
+         setTimeout(() => {
+          errorMsg.style.display = 'none';
+         }, 2000)
+
+        })
+      }
+
+      if(isNaN(inputsNumbers[0].value) && isNaN(inputsNumbers[1].value)){
+             input.style.border = 'red solid 2px'
+
+        errorMsg.style.display = 'flex'
+                          errorMsg.innerHTML = 'Invalid entry'
+                          setTimeout(() => errorMsg.style.display = 'none' , 2000)
+        equalSign.remove()
+        plusButton.addEventListener('click' , () => {
+          errorMsg.style.display = 'flex'
+          errorMsg.innerHTML = 'Invalid numerals'
+
+         setTimeout(() => {
+          errorMsg.style.display = 'none';
+         }, 2000)
+
+        })
+        minusButton.addEventListener('click' , () => {
+                            errorMsg.style.display = 'flex'
+          errorMsg.innerHTML = 'Invalid numerals'
+         setTimeout(() => {
+          errorMsg.style.display = 'none';
+         }, 2000)
+
+        })
+        multiplyButton.addEventListener('click' , () => {
+                            errorMsg.style.display = 'flex'
+          errorMsg.innerHTML = 'Invalid numerals'
+         setTimeout(() => {
+          errorMsg.style.display = 'none';
+         }, 2000)
+
+        })
+        divideButton.addEventListener('click' , () => {
+                            errorMsg.style.display = 'flex'
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
@@ -172,6 +214,7 @@ input.addEventListener('keydown' , (e) => {
         // if fields r backspaced
 
         if(e.key === 'Backspace'){
+          errorMsg.style.display = 'none'
           sign.style.visibility = 'none'
           const answerBoxed = document.querySelectorAll('.flexedAnswer')
           if(inputsNumbers[0].value === '' && inputsNumbers[1].value === ''){
@@ -195,6 +238,10 @@ input.addEventListener('keydown' , (e) => {
         && Number(inputsNumbers[0].value)
         && inputsNumbers[1].value !== ''
         && Number(inputsNumbers[1].value)){
+          plusButton.addEventListener('click' , errorDisplay)
+minusButton.addEventListener('click' , errorDisplay)
+multiplyButton.addEventListener('click' , errorDisplay)
+divideButton.addEventListener('click' , errorDisplay)
           // sign.style.display = 'block'
 document.querySelectorAll('.flexedAnswer').forEach((el) => {
   el.style.display = "none"
