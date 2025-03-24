@@ -37,7 +37,34 @@ let appendedChild = false;
 
 
 
+                          // if the operand buttons r clicked but there's no input values
+                          function errorIfBlank(){
+                              if(input_one.value === '' || input_two.value === ''){
+    errorMsg.style.display = 'flex'
+                  errorMsg.innerHTML = 'Please enter both fields to continue'
+                  setTimeout(() => errorMsg.style.display = 'none' , 2000)
+    }
+                          }
 
+                          function invalidEntry(){
+                            errorMsg.style.display = 'flex'
+                            errorMsg.innerHTML = 'Invalid entry'
+                          setTimeout(() => errorMsg.style.display = 'none' , 2000)
+                          }
+
+      //                      // if letter entered
+      // if (isNaN(inputsNumbers[0].value) || isNaN(inputsNumbers[1].value)) {
+      //   // plusButton.addEventListener('click' , invalidEntry)
+      //   console.log(80)
+      // }
+
+
+
+
+plusButton.addEventListener('click' , errorIfBlank)
+minusButton.addEventListener('click' , errorIfBlank)
+multiplyButton.addEventListener('click' , errorIfBlank)
+divideButton.addEventListener('click' , errorIfBlank)
 
 
 input.style.color = '#f3f3f3'
@@ -67,6 +94,8 @@ input.addEventListener('keydown' , (e) => {
 
 
 
+
+
   CC.addEventListener('click' , () => {
           CC.style.display = 'none'
           inputsNumbers[0].style.border = '#f3f3f3 solid 2px'
@@ -76,26 +105,12 @@ input.addEventListener('keydown' , (e) => {
 
 
      setTimeout(() => {
-              // if the operand buttons r clicked but there's no input values
-plusButton.addEventListener('click' , () => {
-  if(input_one.value === '' || input_two.value === ''){
-    errorMsg.style.display = 'flex'
-                  errorMsg.innerHTML = 'Please enter both fields to continue'
-                  setTimeout(() => errorMsg.style.display = 'none' , 2000)
-    }else{
-      errorMsg.remove()
-    }
 
-
-})
 
        // if letter entered
       if (isNaN(inputsNumbers[0].value) || isNaN(inputsNumbers[1].value)) {
         input.style.border = 'red solid 2px'
-        CC.addEventListener('click' , () => {
-          inputsNumbers[0].style.border = '#f3f3f3 solid 2px'
-                inputsNumbers[1].style.border = '#f3f3f3 solid 2px'
-        })
+
         errorMsg.style.display = 'flex'
                           errorMsg.innerHTML = 'Invalid entry'
                           setTimeout(() => errorMsg.style.display = 'none' , 2000)
@@ -110,25 +125,27 @@ plusButton.addEventListener('click' , () => {
         minusButton.addEventListener('click' , () => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
-          errorMsg.remove()
+          errorMsg.style.display = 'none';
          }, 2000)
 
         })
         multiplyButton.addEventListener('click' , () => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
-          errorMsg.remove()
+          errorMsg.style.display = 'none';
          }, 2000)
 
         })
         divideButton.addEventListener('click' , () => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
-          errorMsg.remove()
+          errorMsg.style.display = 'none';
          }, 2000)
 
         })
       }
+
+
 
       if(Number(input.value)){
   input.style.border = '#f3f3f3 solid 2px'
