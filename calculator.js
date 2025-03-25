@@ -113,6 +113,7 @@ input.addEventListener('keydown' , (e) => {
                           setTimeout(() => errorMsg.style.display = 'none' , 2000)
         equalSign.remove()
         plusButton.addEventListener('click' , () => {
+          errorMsg.style.display = 'flex'
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
@@ -124,7 +125,7 @@ input.addEventListener('keydown' , (e) => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
-         }, 2000)
+         }, 2200)
 
         })
         multiplyButton.addEventListener('click' , () => {
@@ -132,7 +133,7 @@ input.addEventListener('keydown' , (e) => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
-         }, 2000)
+         }, 2300)
 
         })
         divideButton.addEventListener('click' , () => {
@@ -140,7 +141,7 @@ input.addEventListener('keydown' , (e) => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
-         }, 2000)
+         }, 2400)
 
         })
       }
@@ -158,7 +159,7 @@ input.addEventListener('keydown' , (e) => {
 
          setTimeout(() => {
           errorMsg.style.display = 'none';
-         }, 2000)
+         }, 2420)
 
         })
         minusButton.addEventListener('click' , () => {
@@ -166,7 +167,7 @@ input.addEventListener('keydown' , (e) => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
-         }, 2000)
+         }, 2440)
 
         })
         multiplyButton.addEventListener('click' , () => {
@@ -174,7 +175,7 @@ input.addEventListener('keydown' , (e) => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
-         }, 2000)
+         }, 2460)
 
         })
         divideButton.addEventListener('click' , () => {
@@ -182,7 +183,7 @@ input.addEventListener('keydown' , (e) => {
           errorMsg.innerHTML = 'Invalid numerals'
          setTimeout(() => {
           errorMsg.style.display = 'none';
-         }, 2000)
+         }, 2500)
 
         })
       }
@@ -238,6 +239,7 @@ input.addEventListener('keydown' , (e) => {
         && Number(inputsNumbers[0].value)
         && inputsNumbers[1].value !== ''
         && Number(inputsNumbers[1].value)){
+          errorMsg.style.display = 'none'
           plusButton.addEventListener('click' , errorDisplay)
 minusButton.addEventListener('click' , errorDisplay)
 multiplyButton.addEventListener('click' , errorDisplay)
