@@ -5,70 +5,51 @@ const plusButton = document.querySelector('.plus')
 const minusButton = document.querySelector('.minus')
 const multiplyButton = document.querySelector('.multiplied')
 const divideButton = document.querySelector('.divided')
-
 const CCappendH1 = document.querySelector('.append_CC')
-
 // induvidual inputs
 const input_one = document.querySelector('.number_one')
 const input_two = document.querySelector('.number_two')
-
 // error message query
 const errorMsg = document.querySelector('.error_msg')
 errorMsg.style.display = 'none'
 // if input values r not a number
-
-              const CC = document.createElement('button')
-
-
+const CC = document.createElement('button')
 // append a = sign
-
-        const sign = document.querySelector('.equalCreate')
-
-        const equalSign = document.createElement('button')
+const sign = document.querySelector('.equalCreate')
+const equalSign = document.createElement('button')
 
 
-
-
-
-        inputsNumbers.forEach((input) => {
-
-
+ inputsNumbers.forEach((input) => {
 let appendedChild = false;
-
-
-
-                          // if the operand buttons r clicked but there's no input values
-                          function errorIfBlank(){
-                              if(input_one.value === '' || input_two.value === ''){
-    errorMsg.style.display = 'flex'
-                  errorMsg.innerHTML = 'Please enter both fields to continue'
-                  setTimeout(() => errorMsg.style.display = 'none' , 2000)
+// if the operand buttons r clicked but there's no input values
+              function errorIfBlank(){
+               if(input_one.value === '' || input_two.value === ''){
+ errorMsg.style.display = 'flex'
+  errorMsg.innerHTML = 'Please enter both fields to continue'
+     setTimeout(() => errorMsg.style.display = 'none' , 2000)
     }
-                          }
+                    }
 
-                          function invalidEntry(){
-                            errorMsg.style.display = 'flex'
-                            errorMsg.innerHTML = 'Invalid entry'
-                          setTimeout(() => errorMsg.style.display = 'none' , 2000)
+        function invalidEntry(){
+         errorMsg.style.display = 'flex'
+          errorMsg.innerHTML = 'Invalid entry'
+            setTimeout(() => errorMsg.style.display = 'none' , 2000)
                           }
 
       function errorDisplay(){
         errorMsg.style.display = 'none'
       }
 
-
-
 plusButton.addEventListener('click' , errorIfBlank)
 minusButton.addEventListener('click' , errorIfBlank)
 multiplyButton.addEventListener('click' , errorIfBlank)
-divideButton.addEventListener('click' , errorIfBlank)
-
-
+   divideButton.addEventListener('click', errorIfBlank)
+   
 input.style.color = '#f3f3f3'
 input.addEventListener('keydown' , (e) => {
 
 
-                if (!appendedChild) {
+      if (!appendedChild) {
       appendedChild = true;
        // creating a cc reset
               CC.className = 'CC_reset_btn'
@@ -87,12 +68,6 @@ input.addEventListener('keydown' , (e) => {
               })
             }
 
-
-
-
-
-
-
   CC.addEventListener('click' , () => {
           CC.style.display = 'none'
           inputsNumbers[0].style.border = '#f3f3f3 solid 2px'
@@ -102,12 +77,9 @@ input.addEventListener('keydown' , (e) => {
 
 
      setTimeout(() => {
-
-
-       // if letter entered
+      // if letter entered
       if (isNaN(inputsNumbers[0].value) || isNaN(inputsNumbers[1].value)) {
         input.style.border = 'red solid 2px'
-
         errorMsg.style.display = 'flex'
                           errorMsg.innerHTML = 'Invalid entry'
                           setTimeout(() => errorMsg.style.display = 'none' , 2000)
@@ -187,15 +159,11 @@ input.addEventListener('keydown' , (e) => {
 
         })
       }
-
-
-
-      if(Number(input.value)){
-  input.style.border = '#f3f3f3 solid 2px'
+    
+     if (Number(input.value)) {
+          input.style.border = '#f3f3f3 solid 2px'
           errorMsg.style.display = 'none'
-
-
-        }
+      }
 
         if(inputsNumbers[0].value!== '' || inputsNumbers[1].value !== ''){
                     CC.style.display = 'inline'
@@ -205,12 +173,6 @@ input.addEventListener('keydown' , (e) => {
         if(inputsNumbers[0].value== '' || inputsNumbers[1].value == ''){
           equalSign.style.display = 'none'
         }
-
-
-
-
-
-
 
         // if fields r backspaced
 
@@ -225,14 +187,8 @@ input.addEventListener('keydown' , (e) => {
             eachAnswer.style.display = 'none'
           })
         }
-
-
-
-
-
-
-
-        // if its not empty and there both numbers
+        
+       // if its not empty and there both numbers
         // equal sign appending
         if(inputsNumbers[0].value !== ''
         && inputsNumbers[1].value !== ''
@@ -261,15 +217,9 @@ equalSign.className = 'equalsTo'
 
         // Calculations
 
-
-
-
-
-
         // plus
 
-              const answer = document.createElement('span')
-
+          const answer = document.createElement('span')
               // creating all answers element spans
           const answerPlus = document.createElement('span')
           const answerMinus = document.createElement('span')
@@ -359,14 +309,6 @@ if(operation === 'plus'){
 
 
 });
-
-
-
-
-
-
-
-
       }
     }, 0);
 
